@@ -307,31 +307,3 @@ function changeSlide(n) {
     // Open the email client to send the mailto link
     window.location.href = mailtoLink;
   });
-const slider = document.querySelector('.slider');
-const slides = document.querySelectorAll('.slide');
-const slideWidth = slides[0].clientWidth;
-let index = 0;
-
-function showSlide(index) {
-  slider.style.transform = `translateX(-${slideWidth * index}px)`;
-}
-
-function nextSlide() {
-  index = (index + 1) % slides.length;
-  showSlide(index);
-}
-
-function previousSlide() {
-  index = (index - 1 + slides.length) % slides.length;
-  showSlide(index);
-}
-
-setInterval(nextSlide, 5000); // Change slide every 5 seconds (adjust as needed)
-
-// Optional: Add event listeners for navigation buttons
-const nextButton = document.getElementById('nextBtn');
-const prevButton = document.getElementById('prevBtn');
-
-nextButton.addEventListener('click', nextSlide);
-prevButton.addEventListener('click', previousSlide);
-

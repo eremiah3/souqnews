@@ -70,9 +70,36 @@
         navText: ["<span class='arrow_carrot-left'><span/>", "<span class='arrow_carrot-right'><span/>"],
         animateOut: 'fadeOut',
         animateIn: 'fadeIn',
-        smartSpeed: 1200,
+        smartSpeed: 3000,
         autoHeight: false,
         autoplay: true
     });
 
 })(jQuery);
+const slider = document.querySelector('.slider');
+const slides = document.querySelectorAll('.slide');
+const slideWidth = slides[0].clientWidth;
+let index = 0;
+
+function showSlide(index) {
+  slider.style.transform = `translateX(-${slideWidth * index}px)`;
+}
+
+function nextSlide() {
+  index = (index + 1) % slides.length;
+  showSlide(index);
+}
+
+function previousSlide() {
+  index = (index - 1 + slides.length) % slides.length;
+  showSlide(index);
+}
+
+// setInterval(nextSlide, 3000); // Change slide every 9 seconds (adjust as needed)
+
+// Optional: Add event listeners for navigation buttons
+const nextButton = document.getElementById('nextBtn');
+const prevButton = document.getElementById('prevBtn');
+
+nextButton.addEventListener('click', nextSlide);
+prevButton.addEventListener('click', previousSlide);
